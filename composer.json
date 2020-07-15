@@ -16,12 +16,18 @@
     ],
     "require": {
         "composer/installers": "^1.2",
+        "drupal/address": "~1.0",
         "drupal/admin_toolbar": "^2.0",
+        "drupal/build_hooks": "^2.2",
         "drupal/core-composer-scaffold": "^8.8",
         "drupal/core-project-message": "^8.8",
         "drupal/core-recommended": "^8.8",
-        "drupal/metatag": "^1.11",
-        "drupal/pathauto": "^1.6"
+        "drupal/geofield": "^1.8",
+        "drupal/metatag": "^1.13",
+        "drupal/pathauto": "^1.6",
+        "drupal/redirect": "^1.5",
+        "drupal/robots_noindex_nofollow": "^1.1",
+        "drupal/xmlsitemap": "^1.0"
     },
     "require-dev": {
     },

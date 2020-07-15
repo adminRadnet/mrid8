@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * @file
+ * Contains the robots_noindex_nofollow module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function robots_noindex_nofollow_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.robots_noindex_nofollow':
+      $readme = __DIR__ . '/README.md';
+      $text = file_get_contents($readme);
+      $output = '';
+
+      // If the Markdown module is installed, use it to render the README.
+      if ($text && \Drupal::moduleHandler()->moduleExists('markdown') === TRUE) {
+        $filter_manager = \Drupal::service('plugin.manager.filter');
+        $settings = \Drupal::configFactory()->get('markdown.settings')->getRawData();
+        $config = ['settings' => $settings];
+        $filter = $filter_manager->createInstance('markdown', $config);
+        $output = $filter->process($text, 'en');
+      }
+      // Else the Markdown module is not installed output the README as text.
+      elseif ($text) {
+        $output = '<pre>' . $text . '</pre>';
+      }
+
+      // Add a link to the Drupal.org project.
+      $output .= '<p>';
+      $output .= t('Visit the <a href=":project_link">project pages</a> on Drupal.org for more information.', [
+        ':project_link' => 'https://www.drupal.org/project/robots_noindex_nofollow',
+      ]);
+      $output .= '</p>';
+
+      return $output;
+  }
+
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function robots_noindex_nofollow_page_attachments(array &$attachments) {
+
+  $attachments['#attached']['html_head'][] = [
+    [
+      '#tag' => 'meta',
+      '#attributes' => [
+        'name' => 'robots',
+        'content' => 'noindex, nofollow',
+      ],
+    ],
+    'robots_none',
+  ];
+
+}

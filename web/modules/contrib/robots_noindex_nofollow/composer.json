@@ -1,0 +1,20 @@
+{
+  "name": "drupal/robots_noindex_nofollow",
+  "description": "This tiny module prevents your site from being indexed by the search engines.",
+  "type": "drupal-module",
+  "keywords": ["Drupal", "robot", "noindex", "nofollow", "robots noindex nofollow"],
+  "homepage": "https://www.drupal.org/project/robots_noindex_nofollow",
+  "authors": [
+    {
+      "name": "Qiangjun Ran",
+      "homepage": "https://www.drupal.org/u/jungle",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/robots_noindex_nofollow"
+  },
+  "require": {
+    "drupal/core": "^8.0 || ^9.0"
+  }
+}
